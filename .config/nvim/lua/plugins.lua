@@ -11,8 +11,10 @@ return require('packer').startup(function(use)
 	use 'feline-nvim/feline.nvim'
 	use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
 	use 'sainnhe/everforest'
+	use 'hrsh7th/nvim-cmp'
 	use 'Luxed/ayu-vim'
 	use 'hkupty/nvimux'
+	use 'lewis6991/gitsigns.nvim'
 	use {
 	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
@@ -21,6 +23,14 @@ return require('packer').startup(function(use)
   'nvim-telescope/telescope.nvim', tag = '0.1.0',
 -- or                            , branch = '0.1.x',
   requires = { {'nvim-lua/plenary.nvim'} }
+}
+use {
+  'phaazon/hop.nvim',
+  branch = 'v2', -- optional but strongly recommended
+  config = function()
+    -- you can configure Hop the way you like here; see :h hop-config
+    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  end
 }
 	use {
   'kyazdani42/nvim-tree.lua',

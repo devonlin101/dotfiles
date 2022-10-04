@@ -1,10 +1,24 @@
+vim.cmd [[ colorscheme ayu]]
 
-vim.cmd [[ colorscheme ayu ]]
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 
+--lsconfig requirements
+
+--require'lspconfig'.bashls.setup{}
+--require'lspconfig'.cssls.setup{}
+--require'lspconfig'.cssmodules_ls.setup{}
+--require'lspconfig'.html.setup{}
+--require'lspconfig'.jsonls.setup{}
+--require'lspconfig'.prismals.setup{}
+--require'lspconfig'.rust_analyzer.setup{}
+--require'lspconfig'.tailwindcss.setup{}
+--require'lspconfig'.tsserver.setup{}
+
+require('gitsigns').setup()
+require'hop'.setup()
 require("bufferline").setup{}
 
 require("indent_blankline").setup {
@@ -72,7 +86,7 @@ vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEn
   end
 })
 ---ENDWORKAROUND
-
+--
 local line_ok, feline = pcall(require, "feline")
 if not line_ok then
 	return
@@ -282,7 +296,6 @@ local middle = {
 local right = {
 	c.lsp_client_names,
 	c.file_type,
-	c.file_encoding,
 	c.position,
 	c.line_percentage,
 	c.scroll_bar,
