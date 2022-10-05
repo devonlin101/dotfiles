@@ -1,9 +1,0 @@
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.cssmodules_ls.setup{}
-require'lspconfig'.html.setup{}
-require'lspconfig'.jsonls.setup{}
-require'lspconfig'.prismals.setup{}
-require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.tailwindcss.setup{}
-require'lspconfig'.tsserver.setup{}

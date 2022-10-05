@@ -8,13 +8,12 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 	use "lukas-reineke/indent-blankline.nvim"
 	use 'kyazdani42/nvim-web-devicons'
+	use 'lewis6991/gitsigns.nvim'
 	use 'feline-nvim/feline.nvim'
 	use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
 	use 'sainnhe/everforest'
 	use 'hrsh7th/nvim-cmp'
 	use 'Luxed/ayu-vim'
-	use 'hkupty/nvimux'
-	use 'lewis6991/gitsigns.nvim'
 	use {
 	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
