@@ -5,15 +5,61 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
+	--use 'sainnhe/everforest'
   use 'wbthomason/packer.nvim'
 	use "lukas-reineke/indent-blankline.nvim"
+	use "lukas-reineke/lsp-format.nvim"
 	use 'kyazdani42/nvim-web-devicons'
 	use 'lewis6991/gitsigns.nvim'
+	use 'jose-elias-alvarez/null-ls.nvim'
+	use 'MunifTanjim/prettier.nvim'
 	use 'feline-nvim/feline.nvim'
-	use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-	use 'sainnhe/everforest'
-	use 'hrsh7th/nvim-cmp'
+	use 'L3MON4D3/LuaSnip'
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
 	use 'Luxed/ayu-vim'
+	use 'saadparwaiz1/cmp_luasnip'
+	use {
+ "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+	'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+	}
+	use {
+  'hrsh7th/nvim-cmp',
+  config = function ()
+    require'cmp'.setup {
+    snippet = {
+      expand = function(args)
+        require'luasnip'.lsp_expand(args.body)
+      end
+    },
+
+    sources = {
+      { name = 'luasnip' },
+      -- more sources
+    },
+  }
+  end
+}
+	use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+        local saga = require("lspsaga")
+
+        saga.init_lsp_saga({
+            -- your configuration
+        })
+    end,
+})
+	use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
 	use {
 	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
