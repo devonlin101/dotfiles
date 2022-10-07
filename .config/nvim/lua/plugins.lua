@@ -8,7 +8,6 @@ return require('packer').startup(function(use)
 	--use 'sainnhe/everforest'
   use 'wbthomason/packer.nvim'
 	use "lukas-reineke/indent-blankline.nvim"
-	use "lukas-reineke/lsp-format.nvim"
 	use 'kyazdani42/nvim-web-devicons'
 	use 'lewis6991/gitsigns.nvim'
 	use 'jose-elias-alvarez/null-ls.nvim'
