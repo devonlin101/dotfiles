@@ -1,39 +1,18 @@
-vim.cmd [[ colorscheme ayu]]
-vim.cmd [[set completeopt=menu,menuone,noselect]]
-
--- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
-
--- vim.opt.foldmethod     = 'expr'
--- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
----WORKAROUND
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
-	group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
-	callback = function()
-		vim.opt.foldmethod = 'expr'
-		vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
-	end
-})
 require('Comment').setup()
 require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = { "bashls", "dockerls", "tsserver", "sumneko_lua", "marksman", "prismals", "rust_analyzer",
-		"tailwindcss" }
-})
-
-
-
+require("null-ls").setup()
+require("nvim-autopairs").setup {} 
 require('gitsigns').setup()
 require 'hop'.setup()
 require("bufferline").setup {}
+require("mason-null-ls").setup({
+  ensure_installed = { 'gitlint','hadolint','prettier','jq','stylua','shellcheck','vim',''},
+  automatic_installation = true,
+})
+require("mason-lspconfig").setup({
+	ensure_installed = { "bashls", "dockerls", "tsserver", "sumneko_lua", "marksman", "prismals", "rust_analyzer", "tailwindcss" },
+  automatic_installation = true,
+})
 require("indent_blankline").setup {
 	-- for example, context is off by default, use this to turn it on
 	show_current_context = true,

@@ -6,62 +6,29 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
 	--use 'sainnhe/everforest'
-  use 'wbthomason/packer.nvim'
-	use "lukas-reineke/indent-blankline.nvim"
-	use 'kyazdani42/nvim-web-devicons'
-	use 'lewis6991/gitsigns.nvim'
-	use 'jose-elias-alvarez/null-ls.nvim'
-	use 'MunifTanjim/prettier.nvim'
-	use 'feline-nvim/feline.nvim'
-	use 'L3MON4D3/LuaSnip'
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
-	use 'Luxed/ayu-vim'
-	use 'saadparwaiz1/cmp_luasnip'
 	use {
- "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-	'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
-	}
-	use {
-  'hrsh7th/nvim-cmp',
-  config = function ()
-    require'cmp'.setup {
-    snippet = {
-      expand = function(args)
-        require'luasnip'.lsp_expand(args.body)
-      end
-    },
-
-    sources = {
-      { name = 'luasnip' },
-      -- more sources
-    },
-  }
-  end
-}
-	use({
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    config = function()
-        local saga = require("lspsaga")
-
-        saga.init_lsp_saga({
-            -- your configuration
-        })
-    end,
-})
-	use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
-}
-	use {
-	"windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+   'wbthomason/packer.nvim',
+	 'kyazdani42/nvim-web-devicons',
+	 'lewis6991/gitsigns.nvim',
+	 'MunifTanjim/prettier.nvim',
+	 'feline-nvim/feline.nvim',
+	 'L3MON4D3/LuaSnip',
+	 'hrsh7th/cmp-nvim-lsp',
+	 'hrsh7th/cmp-buffer',
+	 'hrsh7th/cmp-path',
+	 'hrsh7th/cmp-cmdline',
+	 'Luxed/ayu-vim',
+	 'saadparwaiz1/cmp_luasnip',
+   'lukas-reineke/indent-blankline.nvim',
+   'williamboman/mason.nvim',
+   'williamboman/mason-lspconfig.nvim',
+	 'jose-elias-alvarez/null-ls.nvim',
+   'jayp0521/mason-null-ls.nvim',
+   'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+   'numToStr/Comment.nvim',
+   'windwp/nvim-autopairs',
+    'hrsh7th/nvim-cmp',
+    "kylechui/nvim-surround",
 	}
 	use {
   'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -83,24 +50,10 @@ use {
   },
   tag = 'nightly' -- optional, updated every week. (see issue #1193)
 }
--- using packer.nvim
 use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
---	use {
-  --'romgrk/barbar.nvim',
-  --requires = {'kyazdani42/nvim-web-devicons'}
---}
-	use {
+use {
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
-	use({
-    "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
-})
 
 end)
