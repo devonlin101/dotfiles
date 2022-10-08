@@ -1,12 +1,14 @@
+
+
 require('Comment').setup()
 require("mason").setup()
 require("null-ls").setup()
-require("nvim-autopairs").setup {} 
+     require("nvim-autopairs").setup {} 
 require('gitsigns').setup()
 require 'hop'.setup()
 require("bufferline").setup {}
 require("mason-null-ls").setup({
-  ensure_installed = { 'gitlint','hadolint','prettier','jq','stylua','shellcheck','vim',''},
+  ensure_installed = { 'gitlint','hadolint','prettier','jq','stylua','shellcheck','vim'},
   automatic_installation = true,
 })
 require("mason-lspconfig").setup({
@@ -16,7 +18,7 @@ require("mason-lspconfig").setup({
 require("indent_blankline").setup {
 	-- for example, context is off by default, use this to turn it on
 	show_current_context = true,
-	show_current_context_start = true,
+	-- show_current_context_start = true,
 }
 
 -- nvim-tree setup 
@@ -40,7 +42,14 @@ prettier.setup({
 		"typescript",
 		"typescriptreact",
 		"yaml",
-		"lua"
+		"lua",
+    "rust"
 	},
 })
 
+-- hide lsp inlint error messages
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+   vim.lsp.diagnostic.on_publish_diagnostics, {
+       virtual_text = false
+   }
+)

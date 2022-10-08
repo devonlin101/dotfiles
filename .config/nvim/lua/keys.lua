@@ -2,6 +2,7 @@ local map = vim.keymap.set
 local builtin = require('telescope.builtin')
 local opts = {noremap = true, silent =true }
 
+-- keybindings
 map('n','<cr>','o<esc>',opts)
 
 -- neovim tree folders
@@ -12,13 +13,13 @@ map('n','[[', '<Cmd>BufferLineCyclePrev<CR>', opts)
 map('n',']]', '<Cmd>BufferLineCycleNext<CR>', opts)
 map('n', '[]', '<Cmd>BufferLineMoveNext<CR>', opts)
 map('n', '][', '<Cmd>BufferLineMovePrev<CR>', opts)
-map('n', ']1', '<Cmd>BufferLineGoToBuffer 1<CR>', opts)
-map('n', ']2', '<Cmd>BufferLineGoToBuffer 2<CR>', opts)
-map('n', ']3', '<Cmd>BufferLineGoToBuffer 3<CR>', opts)
-map('n', ']4', '<Cmd>BufferLineGoToBuffer 4<CR>', opts)
-map('n', ']5', '<Cmd>BufferLineGoToBuffer 5<CR>', opts)
-map('n', ']6', '<Cmd>BufferLineGoToBuffer 6<CR>', opts)
-map('n', ']c', '<Cmd>:bd<CR>', opts)
+map('n', '<leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>', opts)
+map('n', '<leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>', opts)
+map('n', '<leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>', opts)
+map('n', '<leader>4', '<Cmd>BufferLineGoToBuffer 4<CR>', opts)
+map('n', '<leader>5', '<Cmd>BufferLineGoToBuffer 5<CR>', opts)
+map('n', '<leader>6', '<Cmd>BufferLineGoToBuffer 6<CR>', opts)
+map('n', '<leader>c', '<Cmd>:bd<CR>', opts)
 -- place this in one of your configuration file(s)
 map('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<cr>", opts)
 map('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>", opts)
@@ -31,6 +32,12 @@ map('n', '<space>b', builtin.buffers, opts)
 map('n', '<space>o', builtin.oldfiles, opts)
 map('n', '<space>g', builtin.live_grep, opts)
 map('n', '<space>m', builtin.marks, opts)
-map('n', '<space>c', builtin.command_history, opts)
 map('n', '<space>t', builtin.treesitter, opts)
+
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+map('n', '<space>d', vim.diagnostic.open_float, opts)
+map('n', '[d', vim.diagnostic.goto_prev, opts)
+map('n', ']d', vim.diagnostic.goto_next, opts)
+map('n', '<space>q', vim.diagnostic.setloclist, opts)
 

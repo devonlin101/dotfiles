@@ -1,32 +1,33 @@
-
 local options = {
-backup = false,
-number = true,
-showmode = false,
-relativenumber = true,
-mouse = 'a',
-ignorecase = true,
-smartcase = true,
-hlsearch = false,
-wrap = true,
-breakindent = true,
-tabstop = 2,
-softtabstop = 2,
-shiftwidth = 2,
-expandtab = true,
-scrolloff = 4,
-signcolumn = 'yes',
-syntax = "ON",
-tgc = true,
-incsearch = true,
-splitright = true,
-splitbelow = true,
-linebreak = true,
-hidden = true,
-timeoutlen = 1000,
-updatetime = 300,
-ttimeoutlen = 0,
+	backup = false,
+	number = true,
+	showmode = false,
+	relativenumber = true,
+	mouse = 'a',
+	ignorecase = true,
+	smartcase = true,
+	hlsearch = false,
+	wrap = true,
+	breakindent = true,
+	tabstop = 2,
+	softtabstop = 2,
+	shiftwidth = 2,
+	expandtab = true,
+	scrolloff = 4,
+	signcolumn = 'yes',
+	syntax = "ON",
+	tgc = true,
+  ph = 15,
+	incsearch = true,
+	splitright = true,
+	splitbelow = true,
+	linebreak = true,
+	hidden = true,
+	timeoutlen = 1000,
+	updatetime = 300,
+	ttimeoutlen = 0,
 }
+
 
 for key, value in pairs(options) do
 	vim.opt[key] = value
@@ -44,8 +45,9 @@ vim.cmd([[
   augroup end
 ]])
 
--- vim.opt.foldmethod     = 'expr'
--- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+--cancel auto fold method when open documents
+vim.cmd [[ autocmd BufReadPost,FileReadPost * normal zR ]]
+--auto fold 
 ---WORKAROUND
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
 	group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
