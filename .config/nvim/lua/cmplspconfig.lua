@@ -6,7 +6,6 @@ local cmp = require 'cmp'
 -- luasnip setup
 local luasnip = require('luasnip')
 -- Set up nvim-cmp.
-
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -23,17 +22,17 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ['<Tab>'] = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        else
-          fallback()
-        end
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
       end
+    end
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    {name = 'path'},
+    { name = 'path' },
     --{ name = 'vsnip' }, -- For vsnip users.
     { name = 'luasnip' }, -- For luasnip users.
     { name = 'buffer' },
@@ -83,16 +82,16 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  --vim.keymap.set('n', '<space>wl', function()
+  --print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  --end, bufopts)
+  --vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   -- vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
@@ -106,22 +105,20 @@ local lsp_flags = {
 }
 local lspconfig = require('lspconfig')
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = {'sumneko_lua', 'bashls', 'dockerls', 'emmet_ls', 'rust_analyzer', 'jsonls', 'prismals', 'tailwindcss', 'tsserver',
+local servers = { 'sumneko_lua', 'bashls', 'dockerls', 'emmet_ls', 'rust_analyzer', 'jsonls', 'prismals', 'tailwindcss',
+  'tsserver',
   'vimls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-     on_attach = on_attach,
+    on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
     settings = {
       Lua = {
-        diagnostics ={
-          globals = {'vim'},
+        diagnostics = {
+          globals = { 'vim' },
         }
       }
     }
   }
 end
-
-
-

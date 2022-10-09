@@ -1,4 +1,4 @@
-local options = {
+ local options = {
 	backup = false,
 	number = true,
 	showmode = false,
@@ -45,15 +45,16 @@ vim.cmd([[
   augroup end
 ]])
 
+--format on save
 --cancel auto fold method when open documents
-vim.cmd [[ autocmd BufReadPost,FileReadPost * normal zR ]]
+-- vim.cmd [[ autocmd BufReadPost,FileReadPost * normal zR ]]
 --auto fold 
 ---WORKAROUND
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
-	group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
-	callback = function()
-		vim.opt.foldmethod = 'expr'
-		vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
-	end
-})
-
+-- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
+-- 	group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
+-- 	callback = function()
+-- 		vim.opt.foldmethod = 'expr'
+-- 		vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
+-- 	end
+-- })
+--
