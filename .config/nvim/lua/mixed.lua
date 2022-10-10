@@ -31,6 +31,7 @@ require("nvim-autopairs").setup {}
 require('gitsigns').setup()
 require 'hop'.setup()
 require("bufferline").setup {}
+require("luasnip.loaders.from_vscode").lazy_load()
 require('telescope').setup {
   pickers = {
     find_files = {

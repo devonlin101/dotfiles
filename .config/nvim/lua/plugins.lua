@@ -1,7 +1,7 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-          vim.cmd [[packadd packer.nvim]]
+vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
@@ -29,7 +29,9 @@ return require('packer').startup(function(use)
     'windwp/nvim-autopairs',
     'hrsh7th/nvim-cmp',
     "kylechui/nvim-surround",
-    "nvim-lua/plenary.nvim"
+    "nvim-lua/plenary.nvim",
+    "rafamadriz/friendly-snippets"
+
   }
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
