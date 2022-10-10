@@ -45,3 +45,6 @@ map('n', '<space>m', builtin.marks, opts)
 map('n', '[d', vim.diagnostic.goto_prev, opts)
 map('n', ']d', vim.diagnostic.goto_next, opts)
 map('n', '<space>q', '<Cmd>:TroubleToggle<CR>', opts)
+
+--luasnip keybindings
+
