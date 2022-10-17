@@ -26,6 +26,7 @@
 	timeoutlen = 1000,
 	updatetime = 300,
 	ttimeoutlen = 0,
+  swapfile = false
 }
 
 
