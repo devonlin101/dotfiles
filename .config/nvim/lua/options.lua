@@ -1,44 +1,48 @@
- local options = {
-	backup = false,
-	number = true,
-	showmode = false,
-	relativenumber = true,
-	mouse = 'a',
-	ignorecase = true,
-	smartcase = true,
-	hlsearch = false,
-	wrap = true,
-	breakindent = true,
-	tabstop = 2,
-	softtabstop = 2,
-	shiftwidth = 2,
-	expandtab = true,
-	scrolloff = 4,
-	signcolumn = 'yes',
-	syntax = "ON",
-	tgc = true,
+local options = {
+  backup = false,
+  number = true,
+  showmode = false,
+  relativenumber = true,
+  mouse = 'a',
+  ignorecase = true,
+  smartcase = true,
+  hlsearch = false,
+  wrap = true,
+  breakindent = true,
+  tabstop = 2,
+  softtabstop = 2,
+  shiftwidth = 2,
+  expandtab = true,
+  scrolloff = 4,
+  signcolumn = 'yes',
+  syntax = "ON",
+  tgc = true,
   ph = 15,
-	incsearch = true,
-	splitright = true,
-	splitbelow = true,
-	linebreak = true,
-	hidden = true,
-	timeoutlen = 1000,
-	updatetime = 300,
-	ttimeoutlen = 0,
+  incsearch = true,
+  splitright = true,
+  splitbelow = true,
+  linebreak = true,
+  hidden = true,
+  timeoutlen = 1000,
+  updatetime = 300,
+  ttimeoutlen = 0,
   swapfile = false
 }
 
 
 for key, value in pairs(options) do
-	vim.opt[key] = value
+  vim.opt[key] = value
 end
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
-
-vim.cmd [[ colorscheme ayu]]
+vim.cmd([[
+let g:everforest_transparent_background = '2'
+let g:everforest_current_word = 'bold'
+let g:everforest_better_performance = '1'
+colorscheme everforest
+]])
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -49,7 +53,7 @@ vim.cmd([[
 --format on save
 --cancel auto fold method when open documents
 -- vim.cmd [[ autocmd BufReadPost,FileReadPost * normal zR ]]
---auto fold 
+--auto fold
 ---WORKAROUND
 -- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
 -- 	group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),

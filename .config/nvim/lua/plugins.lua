@@ -18,6 +18,7 @@ return require('packer').startup(function(use)
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
     'Luxed/ayu-vim',
+    'sainnhe/everforest',
     'saadparwaiz1/cmp_luasnip',
     'lukas-reineke/indent-blankline.nvim',
     'williamboman/mason.nvim',
@@ -30,9 +31,9 @@ return require('packer').startup(function(use)
     'hrsh7th/nvim-cmp',
     "kylechui/nvim-surround",
     "nvim-lua/plenary.nvim",
-    "rafamadriz/friendly-snippets"
-
+    "rafamadriz/friendly-snippets",
   }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     -- or                            , branch = '0.1.x',
@@ -67,7 +68,7 @@ return require('packer').startup(function(use)
   use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    run = ':TSUpdate'
   }
 
 end)
