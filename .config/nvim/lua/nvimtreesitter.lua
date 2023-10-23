@@ -7,8 +7,7 @@ require 'nvim-treesitter.configs'.setup {
 	--parser_install_dir = "/some/path/to/store/parsers",
 
 	-- A list of parser names, or "all"
-	ensure_installed = { "tsx", "javascript", "typescript", "css", "dockerfile", "html", "json", "json5", "markdown",
-		"prisma", "scss", "bash", "lua", "rust" },
+	ensure_installed = { "tsx", "javascript", "typescript", "css", "dockerfile", "html", "json", "json5", "markdown", "prisma", "scss", "bash", "lua", "rust" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = true,

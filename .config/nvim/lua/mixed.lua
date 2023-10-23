@@ -48,7 +48,7 @@ require("null-ls").setup({
   sources = sources,
 })
 require("mason-lspconfig").setup({
-  ensure_installed = { "bashls", "dockerls", "tsserver", "sumneko_lua", "marksman", "prismals", "rust_analyzer",
+  ensure_installed = { "bashls", "dockerls", "tsserver", "lua_ls", "marksman", "prismals", "rust_analyzer",
     "tailwindcss" },
   automatic_installation = true,
 })
@@ -69,6 +69,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 }
 )
 
+-- null_ls.setup({
+--   on_attach = function(client, bufnr)
+--     if client.server_capabilities.documentFormattingProvider then
+--       vim.api.nvim_command [[augroup Format]]
+--       vim.api.nvim_command [[autocmd! * <buffer>]]
+--       vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+--       vim.api.nvim_command [[augroup END]]
+--     end
+--   end
+-- })
 -- -- format on save
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -77,17 +87,17 @@ require("null-ls").setup({
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-          vim.lsp.buf.format({ bufnr = bufnr,
-            filter = function(client)
-              return client.name == "null-ls"
-            end })
-        end,
-      })
+      -- vim.api.nvim_create_autocmd("BufWritePre", {
+      --   group = augroup,
+      --   buffer = bufnr,
+        -- callback = function()
+        --   -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+        --   vim.lsp.buf.format({ bufnr = bufnr,
+        --     filter = function(client)
+        --       return client.name == "null-ls"
+        --     end })
+        -- end,
+      -- })
     end
   end,
 })
@@ -108,6 +118,7 @@ require("prettier").setup({
     "typescriptreact",
     "yaml",
     "lua",
-    "rust"
+    "rust",
+    "Toml"
   },
 })

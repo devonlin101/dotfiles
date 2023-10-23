@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+
 local builtin = require('telescope.builtin')
 local opts = { noremap = true, silent = true }
 
@@ -10,8 +11,8 @@ map('n', '<cr>', 'o<esc>', opts)
 map('n', '<space>e', '<cmd>:NvimTreeFindFileToggle<cr>', opts)
 
 -- bufferline keybinding
-map('n', '[[', '<Cmd>BufferLineCyclePrev<CR>', opts)
-map('n', ']]', '<Cmd>BufferLineCycleNext<CR>', opts)
+map('n', '<leader>-', '<Cmd>BufferLineCyclePrev<CR>', opts)
+map('n', '<leader>=', '<Cmd>BufferLineCycleNext<CR>', opts)
 map('n', '[]', '<Cmd>BufferLineMoveNext<CR>', opts)
 map('n', '][', '<Cmd>BufferLineMovePrev<CR>', opts)
 map('n', '1<leader>', '<Cmd>BufferLineGoToBuffer 1<CR>', opts)
@@ -32,18 +33,18 @@ map('n', 'F',
 --map('n', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false, hint_offset = 1 })<cr>", opts)
 
 --telescope keybinding
-map('n', '<space><space>', builtin.find_files, opts)
-map('n', '<space>b', builtin.buffers, opts)
-map('n', '<space>o', builtin.oldfiles, opts)
-map('n', '<space>g', builtin.live_grep, opts)
-map('n', '<space>m', builtin.marks, opts)
+-- map('n', '<space><space>', builtin.find_files, opts)
+-- map('n', '<space>b', builtin.buffers, opts)
+-- map('n', '<space>o', builtin.oldfiles, opts)
+-- map('n', '<space>g', builtin.live_grep, opts)
+-- map('n', '<space>m', builtin.marks, opts)
 --map('n', '<space>t', builtin.treesitter, opts)
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 --map('n', '<space>d', vim.diagnostic.open_float, opts)
-map('n', '[d', vim.diagnostic.goto_prev, opts)
-map('n', ']d', vim.diagnostic.goto_next, opts)
+-- map('n', '[d', vim.diagnostic.goto_prev, opts)
+-- map('n', ']d', vim.diagnostic.goto_next, opts)
 map('n', '<space>q', '<Cmd>:TroubleToggle<CR>', opts)
 
 --luasnip keybindings
