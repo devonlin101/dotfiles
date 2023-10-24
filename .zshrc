@@ -116,6 +116,10 @@ alias c='clear'
 alias s='source'
 alias t='tmux'
 alias bat='batcat --paging=never'
+# Alias ls to exa
+alias ls='exa --icons --color=always --group-directories-first'
+
+
 
 
 if [[ $TMUX != "" ]] then

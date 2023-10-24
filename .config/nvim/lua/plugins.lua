@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
     "kylechui/nvim-surround",
     "nvim-lua/plenary.nvim",
     "rafamadriz/friendly-snippets",
+    "nvim-telescope/telescope-file-browser.nvim"
   }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
@@ -69,6 +70,21 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
+  }
+  use {
+    'rmagatti/goto-preview',
+    config = function()
+      require('goto-preview').setup {
+        default_mappings = true
+      }
+    end
+  }
+  use {
+    'wiliamks/nice-reference.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      { 'rmagatti/goto-preview', config = function() require('goto-preview').setup {} end } --optional
+    }
   }
 
 end)

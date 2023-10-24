@@ -32,6 +32,11 @@ require('gitsigns').setup()
 require 'hop'.setup()
 require("bufferline").setup {}
 require("luasnip.loaders.from_vscode").lazy_load()
+-- require('ayu').setup({
+--     mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+--     overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+-- })
+require("telescope").load_extension "file_browser"
 require('telescope').setup {
   defaults = {
       file_ignore_patterns = {
@@ -62,7 +67,7 @@ require("null-ls").setup({
   sources = sources,
 })
 require("mason-lspconfig").setup({
-  ensure_installed = { "bashls", "dockerls", "tsserver", "sumneko_lua", "marksman", "prismals", "rust_analyzer",
+  ensure_installed = { "bashls", "dockerls", "tsserver", "lua_ls", "marksman", "prismals", "rust_analyzer",
     "tailwindcss" },
   automatic_installation = true,
 })

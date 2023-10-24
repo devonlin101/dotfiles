@@ -118,7 +118,7 @@ local lsp_flags = {
 }
 local lspconfig = require('lspconfig')
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'sumneko_lua', 'bashls', 'dockerls', 'emmet_ls', 'rust_analyzer', 'jsonls', 'prismals', 'tailwindcss',
+local servers = { 'lua_ls', 'bashls', 'dockerls', 'emmet_ls', 'rust_analyzer', 'jsonls', 'prismals', 'tailwindcss',
   'tsserver',
   'vimls' }
 for _, lsp in ipairs(servers) do

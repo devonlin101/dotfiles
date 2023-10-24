@@ -7,6 +7,7 @@ local options = {
   ignorecase = true,
   smartcase = true,
   hlsearch = false,
+
   wrap = true,
   breakindent = true,
   tabstop = 2,
@@ -26,7 +27,11 @@ local options = {
   timeoutlen = 1000,
   updatetime = 300,
   ttimeoutlen = 0,
-  swapfile = false
+  swapfile = false,
+  cursorline = true,
+  foldmethod = "expr",
+  foldexpr = "nvim_treesitter#foldexpr()",
+  foldenable = false
 }
 
 
@@ -38,10 +43,7 @@ end
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 vim.cmd([[
-let g:everforest_transparent_background = '2'
-let g:everforest_current_word = 'bold'
-let g:everforest_better_performance = '1'
-colorscheme everforest
+colorscheme ayu
 ]])
 vim.cmd([[
   augroup packer_user_config
@@ -49,6 +51,9 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
+-- let g:everforest_transparent_background = '2'
+-- let g:everforest_current_word = 'bold'
+-- let g:everforest_better_performance = '1'
 
 --format on save
 --cancel auto fold method when open documents

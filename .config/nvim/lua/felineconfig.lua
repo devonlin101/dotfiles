@@ -1,4 +1,3 @@
-
 local line_ok, feline = pcall(require, "feline")
 if not line_ok then
 	return
@@ -208,6 +207,7 @@ local middle = {
 local right = {
 	c.lsp_client_names,
 	c.file_type,
+	c.file_encoding,
 	c.position,
 	c.line_percentage,
 	c.scroll_bar,
