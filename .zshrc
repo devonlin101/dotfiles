@@ -110,25 +110,23 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#alias ls='logo-ls'
 alias v='nvim'
 alias c='clear'
 alias s='source'
 alias t='tmux'
-#alias ls='logo-ls'
 alias bat='batcat --paging=never'
 
-eval "$(fnm env --use-on-cd)"
-source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /Users/devonlin101/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [[ $TMUX != "" ]] then
     export TERM="screen-256color"
 else
     export TERM="xterm-256color"
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# fnm
+export PATH=/home/devonlin01/.fnm:$PATH
+eval "`fnm env`"

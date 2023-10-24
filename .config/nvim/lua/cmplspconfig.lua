@@ -30,6 +30,7 @@ cmp.setup({
       else
         fallback()
       end
+
     end, { "i", "s" }),
 
     ["<S-Tab>"] = cmp.mapping(function(fallback)
