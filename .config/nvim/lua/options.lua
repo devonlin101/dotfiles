@@ -1,3 +1,4 @@
+
 local options = {
   backup = false,
   number = true,
@@ -7,6 +8,7 @@ local options = {
   ignorecase = true,
   smartcase = true,
   hlsearch = false,
+
   wrap = true,
   breakindent = true,
   tabstop = 2,
@@ -26,7 +28,11 @@ local options = {
   timeoutlen = 1000,
   updatetime = 300,
   ttimeoutlen = 0,
-  swapfile = false
+  swapfile = false,
+  cursorline = true,
+  foldmethod = "expr",
+  foldexpr = "nvim_treesitter#foldexpr()",
+  foldenable = false
 }
 
 
@@ -34,21 +40,21 @@ for key, value in pairs(options) do
   vim.opt[key] = value
 end
 
+-- colorscheme
+--vim.cmd([[ colorscheme ayu ]])
+
 -- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-vim.cmd([[
-let g:everforest_transparent_background = '2'
-let g:everforest_current_word = 'bold'
-let g:everforest_better_performance = '1'
-colorscheme everforest
-]])
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+-- vim.g.loaded = 1
+-- vim.g.loaded_netrwPlugin = 1
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+--   augroup end
+-- ]])
+-- let g:everforest_transparent_background = '2'
+-- let g:everforest_current_word = 'bold'
+-- let g:everforest_better_performance = '1'
 
 --format on save
 --cancel auto fold method when open documents

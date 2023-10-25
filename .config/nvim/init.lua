@@ -1,8 +1,9 @@
 require('options')
 require('plugins')
+require('requires')
 require('keys')
-require('mixed')
 require('felineconfig')
-require('cmplspconfig')
-require('nvimtreesitter')
+--require('cmplspconfig')
+--require('nvimtreesitter')
+-- require('lualine')
 

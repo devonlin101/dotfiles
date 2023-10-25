@@ -1,4 +1,3 @@
-
 local line_ok, feline = pcall(require, "feline")
 if not line_ok then
 	return
@@ -6,7 +5,8 @@ end
 
 local one_monokai = {
 	fg = "#abb2bf",
-	bg = "#1e2024",
+	--bg = "#1e2024",
+	bg = "#3c474d",
 	green = "#98c379",
 	yellow = "#e5c07b",
 	purple = "#c678dd",
@@ -208,6 +208,7 @@ local middle = {
 local right = {
 	c.lsp_client_names,
 	c.file_type,
+	c.file_encoding,
 	c.position,
 	c.line_percentage,
 	c.scroll_bar,
@@ -226,7 +227,7 @@ local components = {
 	},
 }
 
-feline.setup({
+require('feline').setup({
 	components = components,
 	theme = one_monokai,
 	vi_mode_colors = vi_mode_colors,
