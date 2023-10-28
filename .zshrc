@@ -81,7 +81,7 @@ ZSH_TMUX_AUTOCONNECT=true
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git tmux web-search zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(zsh-z git tmux web-search zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,7 +117,7 @@ alias s='source'
 alias t='tmux'
 alias bat='batcat --paging=never'
 # Alias ls to exa
-alias ls='exa --icons --color=always --group-directories-first'
+alias ls='eza --icons --color=always --group-directories-first'
 
 
 
@@ -134,3 +134,12 @@ fi
 # fnm
 export PATH=/home/devonlin01/.fnm:$PATH
 eval "`fnm env`"
+export FPATH="<path_to_eza>/completions/zsh:$FPATH"
+
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    autoload -Uz compinit
+    compinit
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

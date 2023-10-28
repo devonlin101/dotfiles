@@ -1,79 +1,125 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = ({
+local plugins = {
 
-    'kyazdani42/nvim-web-devicons',
-    'lewis6991/gitsigns.nvim',
-    'freddiehaddad/feline.nvim',
-    'neanias/everforest-nvim',
-    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-    {
-  "utilyre/barbecue.nvim",
-  name = "barbecue",
-  version = "*",
-  dependencies = {
-    "SmiteshP/nvim-navic",
-    "nvim-tree/nvim-web-devicons", -- optional dependency
-  },
-  opts = {
-    -- configurations go here
-  },
-},
-{
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
+	"Shatur/neovim-ayu",
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"neovim/nvim-lspconfig",
+	"kyazdani42/nvim-web-devicons",
+	"lewis6991/gitsigns.nvim",
+	"freddiehaddad/feline.nvim",
+	"neanias/everforest-nvim",
+	"ggandor/leap.nvim",
+	"hrsh7th/nvim-cmp", -- Autocompletion plugin
+	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
+	"L3MON4D3/LuaSnip", -- Snippets plugin
+	"mhartington/formatter.nvim",
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.4",
+		dependencies = { { "nvim-lua/plenary.nvim" } },
+	},
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
+	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		opts = {
+			-- configurations go here
+		},
+	},
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {}, -- this is equalent to setup({}) function
+	},
+	{
+		"numToStr/Comment.nvim",
+		opts = {
+			-- add any options  here
+		},
+		lazy = false,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			local configs = require("nvim-treesitter.configs")
+			configs.setup({
+				--  ensure_installed = {
+				--    "cpp", "lua", "vim", "javascript", "typescript", "rust"
+				--  },
+				-- sync_install = false,
+				-- auto_install = false,
+				highlight = { enable = true },
+				incremental_selection = { enable = true },
+				indent = { enable = true },
+			})
+		end,
+	},
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	-- {
+	--     'smoka7/hop.nvim',
+	--     version = "*",
+	--     opts = {},
+	-- },
+	--  {
+	--   "nvim-tree/nvim-tree.lua",
+	--   version = "*",
+	--   lazy = false,
+	--   dependencies = {
+	--     "nvim-tree/nvim-web-devicons",
+	--   },
+	--   config = function()
+	--     require("nvim-tree").setup {}
+	--   end,
+	-- },
+	--   'MunifTanjim/prettier.nvim',
+	--   'L3MON4D3/LuaSnip',
+	--   'hrsh7th/cmp-nvim-lsp',
+	--   'hrsh7th/cmp-buffer',
+	--   'hrsh7th/cmp-path',
+	--   'hrsh7th/cmp-cmdline',
+	--   'saadparwaiz1/cmp_luasnip',
+	--  'williamboman/mason.nvim',
+	--  'williamboman/mason-lspconfig.nvim',
+	--   'jose-elias-alvarez/null-ls.nvim',
+	--   'jayp0521/mason-null-ls.nvim',
+	--   'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+	--   'hrsh7th/nvim-cmp',
+	--   "rafamadriz/friendly-snippets",
+	-- plugins/telescope.lua:
 }
-
- --   'MunifTanjim/prettier.nvim',
- --   'L3MON4D3/LuaSnip',
- --   'hrsh7th/cmp-nvim-lsp',
- --   'hrsh7th/cmp-buffer',
- --   'hrsh7th/cmp-path',
- --   'hrsh7th/cmp-cmdline',
- --   'saadparwaiz1/cmp_luasnip',
-  --  'williamboman/mason.nvim',
-  --  'williamboman/mason-lspconfig.nvim',
- --   'jose-elias-alvarez/null-ls.nvim',
- --   'jayp0521/mason-null-ls.nvim',
- --   'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
- --   'numToStr/Comment.nvim',
- --   'windwp/nvim-autopairs',
- --   'hrsh7th/nvim-cmp',
- --   "kylechui/nvim-surround",
- --   "nvim-lua/plenary.nvim",
- --   "rafamadriz/friendly-snippets",
--- plugins/telescope.lua:
- --{
- --   'nvim-telescope/telescope.nvim', tag = '0.1.4',
--- or                              , branch = '0.1.x',
- --     dependencies = { 'nvim-lua/plenary.nvim' }
-   -- },
-   --{
- --   "folke/trouble.nvim",
-   -- dependencies = {"nvim-tree/nvim-web-devicons"},
- -- },
- -- {
---  "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
---  },
-})
 
 local opts = {}
 
 require("lazy").setup(plugins, opts)
-
