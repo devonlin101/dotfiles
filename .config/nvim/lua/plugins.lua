@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -27,6 +28,14 @@ local plugins = {
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"L3MON4D3/LuaSnip", -- Snippets plugin
 	"mhartington/formatter.nvim",
+	{
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.4",
@@ -69,55 +78,35 @@ local plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		config = function()
-			local configs = require("nvim-treesitter.configs")
-			configs.setup({
-				--  ensure_installed = {
-				--    "cpp", "lua", "vim", "javascript", "typescript", "rust"
-				--  },
-				-- sync_install = false,
-				-- auto_install = false,
-				highlight = { enable = true },
-				incremental_selection = { enable = true },
-				indent = { enable = true },
-			})
-		end,
+		-- config = function()
+		-- 	local configs = require("nvim-treesitter.configs")
+		-- 	configs.setup({
+		--
+		-- 		ensure_installed = {
+		-- 			"cpp",
+		-- 			"lua",
+		-- 			"vim",
+		-- 			"javascript",
+		-- 			"typescript",
+		-- 			"rust",
+		-- 		},
+		-- 		sync_install = false,
+		-- 		-- auto_install = false,
+		-- 		highlight = { enable = true },
+		-- 		incremental_selection = { enable = true },
+		-- 		indent = { enable = true },
+		-- 	})
+		-- end,
 	},
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
-	-- {
-	--     'smoka7/hop.nvim',
-	--     version = "*",
-	--     opts = {},
-	-- },
-	--  {
-	--   "nvim-tree/nvim-tree.lua",
-	--   version = "*",
-	--   lazy = false,
-	--   dependencies = {
-	--     "nvim-tree/nvim-web-devicons",
-	--   },
-	--   config = function()
-	--     require("nvim-tree").setup {}
-	--   end,
-	-- },
-	--   'MunifTanjim/prettier.nvim',
-	--   'L3MON4D3/LuaSnip',
-	--   'hrsh7th/cmp-nvim-lsp',
 	--   'hrsh7th/cmp-buffer',
 	--   'hrsh7th/cmp-path',
 	--   'hrsh7th/cmp-cmdline',
 	--   'saadparwaiz1/cmp_luasnip',
-	--  'williamboman/mason.nvim',
 	--  'williamboman/mason-lspconfig.nvim',
-	--   'jose-elias-alvarez/null-ls.nvim',
-	--   'jayp0521/mason-null-ls.nvim',
-	--   'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
-	--   'hrsh7th/nvim-cmp',
-	--   "rafamadriz/friendly-snippets",
-	-- plugins/telescope.lua:
 }
 
 local opts = {}

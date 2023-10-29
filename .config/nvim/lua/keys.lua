@@ -26,7 +26,10 @@ map("n", "<space>o", builtin.oldfiles, opts)
 map("n", "<space>g", builtin.live_grep, opts)
 map("n", "<space>m", builtin.marks, opts)
 map("n", "<space>t", builtin.treesitter, opts)
-map("n", "<space>f", ":Telescope file_browser<CR>", opts)
+-- map("n", "<space>f", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
+
+--nvim tree keybindings
+map("n", "<space>f", "<cmd>:NvimTreeFindFileToggle<CR>", opts)
 
 -- trouble plugin keybindings
 map("n", "<space>q", "<Cmd>:TroubleToggle<CR>", opts)
@@ -38,3 +41,4 @@ map("n", "F", "<Plug>(leap-backward-to)")
 map("n", "gD", vim.lsp.buf.declaration, opts)
 map("n", "gd", vim.lsp.buf.definition, opts)
 map("n", "K", vim.lsp.buf.hover, opts)
+map("n", "<space>rn", vim.lsp.buf.rename, opts)
