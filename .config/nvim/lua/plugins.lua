@@ -18,7 +18,6 @@ local plugins = {
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
-	"kyazdani42/nvim-web-devicons",
 	"lewis6991/gitsigns.nvim",
 	"freddiehaddad/feline.nvim",
 	"neanias/everforest-nvim",
@@ -79,25 +78,6 @@ local plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		-- config = function()
-		-- 	local configs = require("nvim-treesitter.configs")
-		-- 	configs.setup({
-		--
-		-- 		ensure_installed = {
-		-- 			"cpp",
-		-- 			"lua",
-		-- 			"vim",
-		-- 			"javascript",
-		-- 			"typescript",
-		-- 			"rust",
-		-- 		},
-		-- 		sync_install = false,
-		-- 		-- auto_install = false,
-		-- 		highlight = { enable = true },
-		-- 		incremental_selection = { enable = true },
-		-- 		indent = { enable = true },
-		-- 	})
-		-- end,
 	},
 	{
 		"folke/trouble.nvim",
@@ -106,8 +86,6 @@ local plugins = {
 	--   'hrsh7th/cmp-buffer',
 	--   'hrsh7th/cmp-path',
 	--   'hrsh7th/cmp-cmdline',
-	--   'saadparwaiz1/cmp_luasnip',
-	--  'williamboman/mason-lspconfig.nvim',
 }
 
 local opts = {}

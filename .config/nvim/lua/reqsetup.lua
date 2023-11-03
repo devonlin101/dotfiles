@@ -1,4 +1,4 @@
---require'hop'.setup()
+require("hop").setup()
 require("mason").setup()
 require("Comment").setup()
 -- require("everforest").load()
