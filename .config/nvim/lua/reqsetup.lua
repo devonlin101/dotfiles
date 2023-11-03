@@ -2,6 +2,9 @@
 require("mason").setup()
 require("Comment").setup()
 -- require("everforest").load()
+-- require("ayu").setup({
+-- 	mirage = true,
+-- })
 require("ayu").colorscheme()
 require("bufferline").setup({})
 require("gitsigns").setup()
@@ -59,24 +62,23 @@ require("telescope").setup({
 		},
 	},
 	extensions = {
-		file_browser = {
-			-- cwd = vim.g.documentos,
-			hijack_netrw = true,
-			select_buffer = true,
-			hidden = true,
-			depth = 2,
-		},
+		-- file_browser = {
+		-- 	-- cwd = vim.g.documentos,
+		-- 	hijack_netrw = true,
+		-- 	select_buffer = true,
+		-- 	hidden = true,
+		-- 	depth = 2,
+		-- },
 	},
 })
-require("telescope").load_extension("file_browser")
 require("telescope").load_extension("fzf")
 
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
-	-- ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "typescript", "rust" },
+	-- ensure_installed = { "c", "cpp", "cmake", "lua", "make", "vim", "vimdoc", "typescript", "rust" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
-	-- sync_install = false,
+	-- sync_install = true,
 
 	-- Automatically install missing parsers when entering buffer
 	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
@@ -118,4 +120,74 @@ require("nvim-treesitter.configs").setup({
 --  virtual_text = false
 --}
 --)
---
+-- Utilities for creating configurations
+local util = require("formatter.util")
+
+-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
+require("formatter").setup({
+	-- Enable or disable logging
+	logging = true,
+	-- Set the log level
+	log_level = vim.log.levels.WARN,
+	-- All formatter configurations are opt-in
+	filetype = {
+		-- Formatter configurations for filetype "lua" go here
+		-- and will be executed in order
+		lua = {
+			-- "formatter.filetypes.lua" defines default configurations for the
+			-- "lua" filetype
+			require("formatter.filetypes.lua").stylua,
+
+			-- You can also define your own configuration
+			function()
+				-- Supports conditional formatting
+				if util.get_current_buffer_file_name() == "special.lua" then
+					return nil
+				end
+
+				-- Full specification of configurations is down below and in Vim help
+				-- files
+				return {
+					exe = "stylua",
+					args = {
+						"--search-parent-directories",
+						"--stdin-filepath",
+						util.escape_path(util.get_current_buffer_file_path()),
+						"--",
+						"-",
+					},
+					stdin = true,
+				}
+			end,
+		},
+
+		cpp = {
+			require("formatter.filetypes.cpp").clangformat,
+			function()
+				return {
+					exe = "clang-format",
+					args = {
+						"-assume-filename",
+						util.escape_path(util.get_current_buffer_file_name()),
+					},
+					stdin = true,
+					try_node_modules = true,
+				}
+			end,
+		},
+		-- Use the special "*" filetype for defining formatter configurations on
+		-- any filetype
+		["*"] = {
+			-- "formatter.filetypes.any" defines default configurations for any
+			-- filetype
+			require("formatter.filetypes.any").remove_trailing_whitespace,
+		},
+	},
+})
+--format on save code
+vim.cmd([[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost * FormatWrite
+augroup END
+]])

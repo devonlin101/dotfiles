@@ -22,12 +22,17 @@ local plugins = {
 	"lewis6991/gitsigns.nvim",
 	"freddiehaddad/feline.nvim",
 	"neanias/everforest-nvim",
-	"ggandor/leap.nvim",
 	"hrsh7th/nvim-cmp", -- Autocompletion plugin
 	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"L3MON4D3/LuaSnip", -- Snippets plugin
 	"mhartington/formatter.nvim",
+	"christoomey/vim-tmux-navigator",
+	{
+		"smoka7/hop.nvim",
+		version = "*",
+		opts = {},
+	},
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
@@ -44,10 +49,6 @@ local plugins = {
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	},
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	{
