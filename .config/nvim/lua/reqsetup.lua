@@ -40,8 +40,11 @@ require("mason-lspconfig").setup({
 })
 require("ibl").setup({
 	scope = {
-		enabled = true,
+		show_exact_scope = true,
 		highlight = { "Function", "Label" },
+		include = {
+			node_type = { ["*"] = { "*" } },
+		},
 	},
 })
 require("telescope").setup({

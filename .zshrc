@@ -122,11 +122,11 @@ alias ls='eza --icons --color=always --group-directories-first'
 
 
 
-# if [[ $TMUX != "" ]] then
-#     export TERM="screen-256color"
-# else
-#     export TERM="xterm-256color"
-# fi
+if [[ $TMUX != "" ]] then
+    export TERM="screen-256color"
+else
+    export TERM="tmux-256color"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
