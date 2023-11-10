@@ -178,6 +178,18 @@ require("formatter").setup({
 				}
 			end,
 		},
+		cmake = {
+			require("formatter.filetypes.cmake").cmakeformat,
+			function()
+				return {
+					exe = "cmake-format",
+					args = {
+						"-",
+					},
+					stdin = true,
+				}
+			end,
+		},
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
 		["*"] = {

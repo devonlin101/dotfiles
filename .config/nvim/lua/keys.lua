@@ -6,8 +6,8 @@ map("n", "<cr>", "o<esc>", opts)
 --map('n', '<space>', 'i<space><esc>', opts)
 
 -- bufferline keybindings
-map("n", "<leader>[", "<Cmd>BufferLineCyclePrev<CR>", opts)
-map("n", "<leader>]", "<Cmd>BufferLineCycleNext<CR>", opts)
+map("n", "[[", "<Cmd>BufferLineCyclePrev<CR>", opts)
+map("n", "]]", "<Cmd>BufferLineCycleNext<CR>", opts)
 map("n", "<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", opts)
 map("n", "<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", opts)
 map("n", "<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", opts)
@@ -30,7 +30,7 @@ map("n", "<space>t", builtin.treesitter, opts)
 -- map("n", "<space>f", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
 
 --nvim tree keybindings
-map("n", "<space>f", "<cmd>:NvimTreeFindFileToggle<CR>", opts)
+map("n", "<space>e", "<cmd>:NvimTreeFindFileToggle<CR>", opts)
 
 -- trouble plugin keybindings
 map("n", "<space>q", "<Cmd>:TroubleToggle<CR>", opts)
