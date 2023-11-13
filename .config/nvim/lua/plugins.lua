@@ -15,12 +15,12 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 
 	"Shatur/neovim-ayu",
+	"neanias/everforest-nvim",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
 	"lewis6991/gitsigns.nvim",
 	"freddiehaddad/feline.nvim",
-	"neanias/everforest-nvim",
 	"hrsh7th/nvim-cmp", -- Autocompletion plugin
 	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
