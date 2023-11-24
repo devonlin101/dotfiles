@@ -125,7 +125,7 @@ require("nvim-treesitter.configs").setup({
 --)
 -- Utilities for creating configurations
 local util = require("formatter.util")
-
+local defaults = require("formatter.defaults")
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup({
 	-- Enable or disable logging
@@ -163,9 +163,22 @@ require("formatter").setup({
 				}
 			end,
 		},
-
+		c = {
+			-- require("formatter.filetypes.c").clangformat,
+			function()
+				return {
+					exe = "clang-format",
+					args = {
+						"-assume-filename",
+						util.escape_path(util.get_current_buffer_file_name()),
+					},
+					stdin = true,
+					try_node_modules = true,
+				}
+			end,
+		},
 		cpp = {
-			require("formatter.filetypes.cpp").clangformat,
+			-- require("formatter.filetypes.cpp").clangformat,
 			function()
 				return {
 					exe = "clang-format",
@@ -179,7 +192,7 @@ require("formatter").setup({
 			end,
 		},
 		cmake = {
-			require("formatter.filetypes.cmake").cmakeformat,
+			-- require("formatter.filetypes.cmake").cmakeformat,
 			function()
 				return {
 					exe = "cmake-format",
@@ -190,6 +203,8 @@ require("formatter").setup({
 				}
 			end,
 		},
+		javascript = {},
+		typescriptreact = {},
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
 		["*"] = {
