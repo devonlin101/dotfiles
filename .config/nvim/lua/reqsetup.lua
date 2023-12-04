@@ -1,13 +1,19 @@
-require("hop").setup()
-require("mason").setup()
-require("Comment").setup()
 -- require("everforest").load()
 -- require("ayu").setup({
 -- 	mirage = true,
 -- })
+require("hop").setup()
+require("Comment").setup()
 require("ayu").colorscheme()
 require("bufferline").setup({})
 require("gitsigns").setup()
+require("mason").setup({
+	opts = {
+		ensure_installed = {
+			"typescript-language-server",
+		},
+	},
+})
 require("nvim-tree").setup({
 	disable_netrw = true,
 	hijack_netrw = true,
@@ -199,6 +205,15 @@ require("formatter").setup({
 					args = {
 						"-",
 					},
+					stdin = true,
+				}
+			end,
+		},
+		rust = {
+			function()
+				return {
+					exe = "rustfmt",
+					args = { "--edition 2021" },
 					stdin = true,
 				}
 			end,

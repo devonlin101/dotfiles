@@ -1,6 +1,14 @@
 -- Setup language servers.
 local lspconfig = require("lspconfig")
-
+-- local on_attach = lspconfig.on_attach
+-- local capabilities = lspconfig.capabilities
+-- lspconfig.clangd.setup({
+-- 	on_attach = function(client, bufnr)
+-- 		client.server_capabilities.signatureHelpProvider = false
+-- 		on_attach(client, bufnr)
+-- 	end,
+-- 	capabilities = capabilities,
+-- })
 lspconfig.clangd.setup({})
 lspconfig.cmake.setup({})
 lspconfig.pyright.setup({})
