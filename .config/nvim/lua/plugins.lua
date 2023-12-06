@@ -23,8 +23,14 @@ local plugins = {
 	"freddiehaddad/feline.nvim",
 	"hrsh7th/nvim-cmp", -- Autocompletion plugin
 	"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-cmdline",
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"L3MON4D3/LuaSnip", -- Snippets plugin
+	-- "hrsh7th/cmp-vsnip",
+	-- "hrsh7th/vim-vsnip",
+	"hrsh7th/vim-vsnip-integ",
 	"mhartington/formatter.nvim",
 	"christoomey/vim-tmux-navigator",
 	{
@@ -83,9 +89,6 @@ local plugins = {
 	-- 		-- configurations go here
 	-- 	},
 	-- },
-	--   'hrsh7th/cmp-buffer',
-	--   'hrsh7th/cmp-path',
-	--   'hrsh7th/cmp-cmdline',
 }
 
 local opts = {}

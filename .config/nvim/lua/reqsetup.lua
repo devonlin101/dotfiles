@@ -2,6 +2,7 @@
 -- require("ayu").setup({
 -- 	mirage = true,
 -- })
+
 require("hop").setup()
 require("Comment").setup()
 require("ayu").colorscheme()

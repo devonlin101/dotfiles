@@ -1,12 +1,3 @@
--- local use = require('packer').use
--- require('packer').startup(function()
---   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
---   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
---   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
---   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
---   use 'L3MON4D3/LuaSnip' -- Snippets plugin
--- end)
-
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -32,11 +23,16 @@ cmp.setup({
 			luasnip.lsp_expand(args.body)
 		end,
 	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	formatting = {},
 	mapping = cmp.mapping.preset.insert({
-		["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
-		["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
+		-- ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+		-- ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
 		-- C-b (back) C-f (forward) for snippet placeholder navigation.
-		["<C-Space>"] = cmp.mapping.complete(),
+		-- ["<C-Space>"] = cmp.mapping.complete(),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
@@ -64,4 +60,31 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	},
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype("gitcommit", {
+	sources = cmp.config.sources({
+		{ name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+	}, {
+		{ name = "buffer" },
+	}),
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ "/", "?" }, {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
 })
