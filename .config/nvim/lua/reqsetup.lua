@@ -1,11 +1,10 @@
--- require("everforest").load()
+require("everforest").load()
 -- require("ayu").setup({
 -- 	mirage = true,
 -- })
-
+-- require("ayu").colorscheme()
 require("hop").setup()
 require("Comment").setup()
-require("ayu").colorscheme()
 require("bufferline").setup({})
 require("gitsigns").setup()
 require("mason").setup({

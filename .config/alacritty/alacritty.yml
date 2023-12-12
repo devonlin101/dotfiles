@@ -825,4 +825,4 @@ mouse:
   # Highlight window damage information.
   #highlight_damage: false
 import:
-  - ~/.alacritty-colorscheme/themes/ayu_dark.yaml
+  - ~/.alacritty-colorscheme/themes/everforest_dark.yaml
