@@ -1,5 +1,5 @@
 local options = {
-	-- termguicolors = true,
+	termguicolors = true,
 	backup = false,
 	number = true,
 	showmode = false,

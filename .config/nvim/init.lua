@@ -9,4 +9,3 @@ require("keys")
 require("felineconfig")
 require("lspsettings")
 require("nvimcmp")
-

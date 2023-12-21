@@ -218,7 +218,19 @@ require("formatter").setup({
 				}
 			end,
 		},
-		javascript = {},
+		javascript = {
+			function()
+				return {
+					exe = "biome",
+					args = {
+						"format",
+						"--stdin-file-path",
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
+					stdin = true,
+				}
+			end,
+		},
 		typescriptreact = {},
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype

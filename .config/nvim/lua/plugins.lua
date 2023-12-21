@@ -15,17 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 
 	"Shatur/neovim-ayu",
-	{
-		"neanias/everforest-nvim",
-		priority = 1000,
-		config = function()
-			require("everforest").setup({
-				italics = true,
-				dim_inactive_windows = true,
-				diagnostic_text_hightlight = true,
-			})
-		end,
-	},
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
@@ -43,6 +32,17 @@ local plugins = {
 	"hrsh7th/vim-vsnip-integ",
 	"mhartington/formatter.nvim",
 	"christoomey/vim-tmux-navigator",
+	{
+		"neanias/everforest-nvim",
+		priority = 1000,
+		config = function()
+			require("everforest").setup({
+				italics = true,
+				dim_inactive_windows = true,
+				diagnostic_text_hightlight = true,
+			})
+		end,
+	},
 	{
 		"smoka7/hop.nvim",
 		version = "*",
