@@ -115,6 +115,7 @@ alias v='nvim'
 alias c='clear'
 alias s='source'
 alias t='tmux'
+alias e='exit'
 # alias bat='bat--paging=never'
 # Alias ls to exa
 alias ls='eza --icons --color=always --group-directories-first'
