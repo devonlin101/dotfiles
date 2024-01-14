@@ -5,7 +5,8 @@ end
 
 local one_monokai = {
 	fg = "#abb2bf",
-	bg = "#1e2024",
+	bg = "#2d363b",
+	-- bg = "#1e2024",
 	-- bg = "#3c474d",
 	green = "#98c379",
 	yellow = "#e5c07b",
@@ -93,7 +94,7 @@ local c = {
 		provider = {
 			name = "file_info",
 			opts = {
-				type = "relative-short",
+				type = "full-path",
 			},
 		},
 		hl = {

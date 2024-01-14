@@ -14,7 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
-	"Shatur/neovim-ayu",
+	-- "Shatur/neovim-ayu",
+	-- "hrsh7th/cmp-vsnip",
+	-- "hrsh7th/vim-vsnip",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
@@ -27,8 +29,6 @@ local plugins = {
 	"hrsh7th/cmp-cmdline",
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"L3MON4D3/LuaSnip", -- Snippets plugin
-	-- "hrsh7th/cmp-vsnip",
-	-- "hrsh7th/vim-vsnip",
 	"hrsh7th/vim-vsnip-integ",
 	"mhartington/formatter.nvim",
 	"christoomey/vim-tmux-navigator",
