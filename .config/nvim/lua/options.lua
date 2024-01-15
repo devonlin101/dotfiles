@@ -1,5 +1,6 @@
 local options = {
 	termguicolors = true,
+  background = "dark",
 	backup = false,
 	number = true,
 	showmode = false,

@@ -81,7 +81,7 @@ ZSH_TMUX_AUTOCONNECT=true
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-z git tmux web-search zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(z git tmux web-search zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,12 +111,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #alias ls='logo-ls'
-alias v='nvim'
+alias v='./nvim.appimage'
 alias c='clear'
 alias s='source'
 alias t='tmux'
 alias e='exit'
-alias u='sh dailybash.sh'
+alias u='sh updatebash.sh'
 # alias bat='bat--paging=never'
 # Alias ls to exa
 alias ls='eza --icons --color=always --group-directories-first'
@@ -145,3 +145,5 @@ if type brew &>/dev/null; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

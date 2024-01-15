@@ -82,23 +82,33 @@ local plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+     config = function ()
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+          ensure_installed = { "c","cpp","cmake", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html","tsx","typescript","rust" },
+          sync_install = false,
+          highlight = { enable = true },
+          indent = { enable = true },
+        })
+    end
 	},
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
-	-- {
-	-- 	"utilyre/barbecue.nvim",
-	-- 	name = "barbecue",
-	-- 	version = "*",
-	-- 	dependencies = {
-	-- 		"SmiteshP/nvim-navic",
-	-- 		"nvim-tree/nvim-web-devicons", -- optional dependency
-	-- 	},
-	-- 	opts = {
-	-- 		-- configurations go here
-	-- 	},
-	-- },
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		opts = {
+			-- configurations go here
+		},
+	},
 }
 
 local opts = {}
