@@ -48,39 +48,39 @@ require("ibl").setup({
 		},
 	},
 })
-require("telescope").setup({
-	defaults = {
-		layout_strategy = "vertical",
-		file_ignore_patterns = {
-			"node_modules",
-			"build",
-			"dist",
-			"yarn.lock",
-			".gitignore",
-		},
-	},
-	pickers = {
-		find_files = {
-			-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
-		},
-	},
-	extensions = {
-		-- file_browser = {
-		-- 	-- cwd = vim.g.documentos,
-		-- 	hijack_netrw = true,
-		-- 	select_buffer = true,
-		-- 	hidden = true,
-		-- 	depth = 2,
-		-- },
-	},
-})
+-- require("telescope").setup({
+-- 	defaults = {
+-- 		layout_strategy = "vertical",
+-- 		file_ignore_patterns = {
+-- 			"node_modules",
+-- 			"build",
+-- 			"dist",
+-- 			"yarn.lock",
+-- 			".gitignore",
+-- 		},
+-- 	},
+-- 	pickers = {
+-- 		find_files = {
+-- 			-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+-- 			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+-- 		},
+-- 	},
+-- 	extensions = {
+-- 		-- file_browser = {
+-- 		-- 	-- cwd = vim.g.documentos,
+-- 		-- 	hijack_netrw = true,
+-- 		-- 	select_buffer = true,
+-- 		-- 	hidden = true,
+-- 		-- 	depth = 2,
+-- 		-- },
+-- 	},
+-- })
 
-require("telescope").load_extension("fzf")
+-- require("telescope").load_extension("fzf")
 
-require("lint").linters_by_ft = {
-	markdown = { "vale" },
-}
+-- require("lint").linters_by_ft = {
+-- 	markdown = { "vale" },
+-- }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	callback = function()

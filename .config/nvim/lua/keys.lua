@@ -21,13 +21,13 @@ map("n", "][", "<Cmd>BufferLineMovePrev<CR>", opts)
 map("n", "<leader><leader>", "<Cmd>:bd<CR>", opts)
 
 --telescope keybinding
-local builtin = require("telescope.builtin")
-map("n", "<space><space>", builtin.find_files, opts)
-map("n", "<space>b", builtin.buffers, opts)
-map("n", "<space>o", builtin.oldfiles, opts)
-map("n", "<space>g", builtin.live_grep, opts)
-map("n", "<space>m", builtin.marks, opts)
-map("n", "<space>t", builtin.treesitter, opts)
+-- local builtin = require("telescope.builtin")
+-- map("n", "<space><space>", builtin.find_files, opts)
+-- map("n", "<space>b", builtin.buffers, opts)
+-- map("n", "<space>o", builtin.oldfiles, opts)
+-- map("n", "<space>g", builtin.live_grep, opts)
+-- map("n", "<space>m", builtin.marks, opts)
+-- map("n", "<space>t", builtin.treesitter, opts)
 -- map("n", "<space>f", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
 
 --nvim tree keybindings

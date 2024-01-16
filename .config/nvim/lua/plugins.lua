@@ -18,7 +18,7 @@ local plugins = {
 	-- "hrsh7th/cmp-vsnip",
 	-- "hrsh7th/vim-vsnip",
 	-- "mhartington/formatter.nvim",
-	"mfussenegger/nvim-lint",
+	-- "mfussenegger/nvim-lint",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
@@ -56,15 +56,12 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
-		dependencies = { { "nvim-lua/plenary.nvim" } },
-	},
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	},
+	-- {
+	-- 	"nvim-telescope/telescope.nvim",
+	-- 	tag = "0.1.4",
+	-- 	dependencies = { { "nvim-lua/plenary.nvim" } },
+	-- },
+	-- {},
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	{
@@ -78,6 +75,7 @@ local plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local configs = require("nvim-treesitter.configs")
 
@@ -121,17 +119,17 @@ local plugins = {
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
-		keys = {
-			{
-				-- Customize or remove this keymap to your liking
-				"<leader>f",
-				function()
-					require("conform").format({ async = true, lsp_fallback = true })
-				end,
-				mode = "",
-				desc = "Format buffer",
-			},
-		},
+		-- keys = {
+		-- 	{
+		-- 		-- Customize or remove this keymap to your liking
+		-- 		"<leader>f",
+		-- 		function()
+		-- 			require("conform").format({ async = true, lsp_fallback = true })
+		-- 		end,
+		-- 		mode = "",
+		-- 		desc = "Format buffer",
+		-- 	},
+		-- },
 		-- Everything in opts will be passed to setup()
 		opts = {
 			-- Define your formatters
