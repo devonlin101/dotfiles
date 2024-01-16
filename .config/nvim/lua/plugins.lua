@@ -17,6 +17,8 @@ local plugins = {
 	-- "Shatur/neovim-ayu",
 	-- "hrsh7th/cmp-vsnip",
 	-- "hrsh7th/vim-vsnip",
+	-- "mhartington/formatter.nvim",
+	"mfussenegger/nvim-lint",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
@@ -30,7 +32,6 @@ local plugins = {
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"L3MON4D3/LuaSnip", -- Snippets plugin
 	"hrsh7th/vim-vsnip-integ",
-	"mhartington/formatter.nvim",
 	"christoomey/vim-tmux-navigator",
 	{
 		"neanias/everforest-nvim",
@@ -46,7 +47,6 @@ local plugins = {
 	{
 		"smoka7/hop.nvim",
 		version = "*",
-		opts = {},
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -66,32 +66,43 @@ local plugins = {
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		opts = {}, -- this is equalent to setup({}) function
 	},
 	{
 		"numToStr/Comment.nvim",
-		opts = {
-			-- add any options  here
-		},
 		lazy = false,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-     config = function ()
-      local configs = require("nvim-treesitter.configs")
+		config = function()
+			local configs = require("nvim-treesitter.configs")
 
-      configs.setup({
-          ensure_installed = { "c","cpp","cmake", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html","tsx","typescript","rust" },
-          sync_install = false,
-          highlight = { enable = true },
-          indent = { enable = true },
-        })
-    end
+			configs.setup({
+				ensure_installed = {
+					"c",
+					"cpp",
+					"cmake",
+					"lua",
+					"vim",
+					"vimdoc",
+					"query",
+					"elixir",
+					"heex",
+					"javascript",
+					"html",
+					"tsx",
+					"typescript",
+					"rust",
+				},
+				sync_install = false,
+				highlight = { enable = true },
+				indent = { enable = true },
+			})
+		end,
 	},
 	{
 		"folke/trouble.nvim",
@@ -105,9 +116,51 @@ local plugins = {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons", -- optional dependency
 		},
-		opts = {
-			-- configurations go here
+	},
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		keys = {
+			{
+				-- Customize or remove this keymap to your liking
+				"<leader>f",
+				function()
+					require("conform").format({ async = true, lsp_fallback = true })
+				end,
+				mode = "",
+				desc = "Format buffer",
+			},
 		},
+		-- Everything in opts will be passed to setup()
+		opts = {
+			-- Define your formatters
+			formatters_by_ft = {
+				cpp = { "clang_format" },
+				cmake = { "cmake_format" },
+				lua = { "stylua" },
+				python = { "isort", "black" },
+				javascript = { { "prettierd", "prettier" } },
+				rust = { "rustfmt" },
+			},
+			-- Use the "*" filetype to run formatters on all filetypes.
+			-- ["*"] = { "codespell" },
+			-- Use the "_" filetype to run formatters on filetypes that don't
+			-- have other formatters configured.
+			-- ["_"] = { "trim_whitespace" },
+			-- Set up format-on-save
+			format_on_save = { timeout_ms = 500, lsp_fallback = true },
+			-- Customize formatters
+			formatters = {
+				shfmt = {
+					prepend_args = { "-i", "2" },
+				},
+			},
+		},
+		init = function()
+			-- If you want the formatexpr, here is the place to set it
+			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+		end,
 	},
 }
 

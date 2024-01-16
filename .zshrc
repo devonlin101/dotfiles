@@ -60,6 +60,7 @@ ZSH_TMUX_AUTOCONNECT=true
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
+
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
@@ -111,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #alias ls='logo-ls'
-alias v='./nvim.appimage'
+alias v='nvim'
 alias c='clear'
 alias s='source'
 alias t='tmux'
