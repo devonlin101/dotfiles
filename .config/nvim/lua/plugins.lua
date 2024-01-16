@@ -119,33 +119,35 @@ local plugins = {
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
-		-- keys = {
-		-- 	{
-		-- 		-- Customize or remove this keymap to your liking
-		-- 		"<leader>f",
-		-- 		function()
-		-- 			require("conform").format({ async = true, lsp_fallback = true })
-		-- 		end,
-		-- 		mode = "",
-		-- 		desc = "Format buffer",
-		-- 	},
-		-- },
+		keys = {
+			{
+				-- Customize or remove this keymap to your liking
+				"<leader>f",
+				function()
+					require("conform").format({ async = true, lsp_fallback = true })
+				end,
+				mode = "",
+				desc = "Format buffer",
+			},
+		},
 		-- Everything in opts will be passed to setup()
 		opts = {
 			-- Define your formatters
 			formatters_by_ft = {
+				sh = { "beautysh" },
 				cpp = { "clang_format" },
 				cmake = { "cmake_format" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				javascript = { { "prettierd", "prettier" } },
+				typescriptreact = { { "prettierd", "prettier" } },
 				rust = { "rustfmt" },
 			},
 			-- Use the "*" filetype to run formatters on all filetypes.
-			-- ["*"] = { "codespell" },
+			["*"] = { "codespell" },
 			-- Use the "_" filetype to run formatters on filetypes that don't
 			-- have other formatters configured.
-			-- ["_"] = { "trim_whitespace" },
+			["_"] = { "trim_whitespace" },
 			-- Set up format-on-save
 			format_on_save = { timeout_ms = 500, lsp_fallback = true },
 			-- Customize formatters
