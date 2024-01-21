@@ -199,7 +199,7 @@ local left = {
 }
 
 local middle = {
-	c.fileinfo,
+	-- c.fileinfo,
 	c.diagnostic_errors,
 	c.diagnostic_warnings,
 	c.diagnostic_info,

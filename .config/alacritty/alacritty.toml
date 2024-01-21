@@ -16,7 +16,7 @@ family = "VictorMono NFM semibold"
 style = "Bold"
 
 [font.italic]
-family = "VictorMono Nerd Font Mono"
+family = "VictorMono NFM SemiBold"
 style = "Italic"
 
 [font.normal]
