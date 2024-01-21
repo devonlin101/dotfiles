@@ -19,6 +19,34 @@ local plugins = {
 	-- "hrsh7th/vim-vsnip",
 	-- "mhartington/formatter.nvim",
 	-- "mfussenegger/nvim-lint",
+	-- {
+	-- 	"utilyre/barbecue.nvim",
+	-- 	name = "barbecue",
+	-- 	version = "*",
+	-- 	dependencies = {
+	-- 		"SmiteshP/nvim-navic",
+	-- 		"nvim-tree/nvim-web-devicons", -- optional dependency
+	-- 	},
+	-- },
+	-- {
+	-- 	"nvim-telescope/telescope.nvim",
+	-- 	tag = "0.1.4",
+	-- 	dependencies = { { "nvim-lua/plenary.nvim" } },
+	-- },
+	-- {
+	-- 	"neanias/everforest-nvim",
+	-- 	version = false,
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("everforest").setup({
+	-- 			-- italics = true,
+	-- 			-- 	dim_inactive_windows = true,
+	-- 			-- 	diagnostic_text_hightlight = true,
+	-- 		})
+	-- 	end,
+	-- },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
@@ -34,17 +62,6 @@ local plugins = {
 	"hrsh7th/vim-vsnip-integ",
 	"christoomey/vim-tmux-navigator",
 	{
-		"neanias/everforest-nvim",
-		priority = 1000,
-		config = function()
-			require("everforest").setup({
-				italics = true,
-				dim_inactive_windows = true,
-				diagnostic_text_hightlight = true,
-			})
-		end,
-	},
-	{
 		"smoka7/hop.nvim",
 		version = "*",
 	},
@@ -56,17 +73,12 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
-	-- {
-	-- 	"nvim-telescope/telescope.nvim",
-	-- 	tag = "0.1.4",
-	-- 	dependencies = { { "nvim-lua/plenary.nvim" } },
-	-- },
-	-- {},
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
+		opts = {},
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -105,15 +117,6 @@ local plugins = {
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-	{
-		"utilyre/barbecue.nvim",
-		name = "barbecue",
-		version = "*",
-		dependencies = {
-			"SmiteshP/nvim-navic",
-			"nvim-tree/nvim-web-devicons", -- optional dependency
-		},
 	},
 	{
 		"stevearc/conform.nvim",

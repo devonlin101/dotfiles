@@ -14,9 +14,11 @@ end
 
 -- luasnip setup
 local luasnip = require("luasnip")
+-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 -- nvim-cmp setup
 local cmp = require("cmp")
+-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm.done())
 cmp.setup({
 	snippet = {
 		expand = function(args)

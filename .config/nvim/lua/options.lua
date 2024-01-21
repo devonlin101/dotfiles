@@ -1,6 +1,5 @@
 local options = {
 	termguicolors = true,
-  background = "dark",
 	backup = false,
 	number = true,
 	showmode = false,
@@ -31,9 +30,10 @@ local options = {
 	ttimeoutlen = 0,
 	swapfile = false,
 	cursorline = true,
-	foldmethod = "expr",
-	foldexpr = "nvim_treesitter#foldexpr()",
-	foldenable = false,
+	-- background = "dark",
+	-- foldmethod = "expr",
+	-- foldexpr = "nvim_treesitter#foldexpr()",
+	-- foldenable = false,
 }
 
 for key, value in pairs(options) do

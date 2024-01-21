@@ -1,4 +1,6 @@
-require("everforest").load()
+vim.cmd.colorscheme("catppuccin-macchiato")
+-- colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+-- require("everforest").load()
 require("hop").setup()
 require("Comment").setup()
 require("bufferline").setup({})
